@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Omar Reyes - Cybersecurity Portfolio</title>
+  <meta name="description" content="Cybersecurity and networking portfolio showcasing education, certifications, skills, and hands-on experience." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="light"] {
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --color-bg: #f7f6f2;
+      --color-surface: #f9f8f5;
+      --color-surface-2: #ffffff;
+      --color-surface-offset: #edeae5;
+      --color-divider: #dcd9d5;
+      --color-text: #28251d;
+      --color-text-muted: #6f6d67;
+      --color-text-inverse: #f9f8f4;
+      --color-primary: #01696f;
+      --color-primary-hover: #0c4e54;
+      --color-primary-highlight: #cedcd8;
+      --color-blue: #006494;
+      --color-gold: #b07a00;
+      --radius-md: 0.75rem;
+      --radius-lg: 1rem;
+      --radius-xl: 1.5rem;
+      --radius-full: 9999px;
+      --shadow-sm: 0 1px 2px rgba(27, 25, 21, 0.06);
+      --shadow-md: 0 10px 30px rgba(27, 25, 21, 0.08);
+      --content-default: 1120px;
+      --font-display: 'Instrument Serif', Georgia, serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    [data-theme="dark"] {
+      --color-bg: #171614;
+      --color-surface: #1c1b19;
+      --color-surface-2: #201f1d;
+      --color-surface-offset: #242320;
+      --color-divider: #2a2927;
+      --color-text: #e3e0da;
+      --color-text-muted: #a7a49d;
+      --color-text-inverse: #1c1b19;
+      --color-primary: #4f98a3;
+      --color-primary-hover: #6eafb8;
+      --color-primary-highlight: #2d3838;
+      --color-blue: #7ab0d8;
+      --color-gold: #e2bc58;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+      --shadow-md: 0 10px 30px rgba(0,0,0,0.35);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--color-text);
+      background: radial-gradient(circle at top right, color-mix(in srgb, var(--color-primary) 10%, transparent), transparent 28%), var(--color-bg);
+    }
+    a { color: inherit; text-decoration: none; }
+    img, svg { max-width: 100%; display: block; }
+    button { font: inherit; }
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -3rem;
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      z-index: 100;
+    }
+    .skip-link:focus { top: 1rem; }
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: color-mix(in srgb, var(--color-bg) 82%, transparent);
+      border-bottom: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
+    }
+    .header-inner {
+      max-width: var(--content-default);
+      margin: 0 auto;
+      padding: var(--space-3) var(--space-4);
+      display: flex;
+      gap: var(--space-4);
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-size: var(--text-sm);
+      font-weight: 700;
+    }
+    .brand svg { width: 34px; height: 34px; color: var(--color-primary); }
+    .nav { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+    .nav a, .theme-toggle {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.65rem 0.95rem;
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      border: 1px solid transparent;
+      background: transparent;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition), transform var(--transition), border-color var(--transition);
+    }
+    .nav a:hover, .nav a.active, .theme-toggle:hover, .theme-toggle:focus-visible {
+      background: var(--color-surface-offset);
+      color: var(--color-text);
+      border-color: color-mix(in srgb, var(--color-text) 10%, transparent);
+    }
+    .shell { max-width: var(--content-default); margin: 0 auto; padding: 0 var(--space-4) var(--space-16); }
+    .panel { display: none; padding-top: var(--space-12); }
+    .panel.active { display: block; }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: var(--space-8);
+      align-items: center;
+    }
+    .eyebrow {
+      font-size: var(--text-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+    h1, h2, h3 { margin: 0; line-height: 1.1; }
+    h1 { font-family: var(--font-display); font-size: var(--text-2xl); margin-top: var(--space-4); }
+    h2 { font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: var(--space-4); }
+    h3 { font-size: var(--text-lg); margin-bottom: var(--space-2); }
+    p { margin: 0; max-width: 68ch; }
+    .hero-copy p, .section-intro p, .meta, .small, .tagline { color: var(--color-text-muted); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-6); }
+    .btn {
+      min-height: 46px;
+      padding: 0.85rem 1.15rem;
+      border-radius: var(--radius-full);
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: var(--text-sm);
+      font-weight: 700;
+      transition: transform var(--transition), background var(--transition), color var(--transition), border-color var(--transition);
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--color-primary); color: var(--color-text-inverse); }
+    .btn-primary:hover { background: var(--color-primary-hover); }
+    .btn-secondary { background: var(--color-surface); border-color: color-mix(in srgb, var(--color-text) 12%, transparent); }
+    .hero-card, .card, .project-card, .doc-card, .contact-card, .timeline-item {
+      background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+      border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+    }
+    .hero-card { padding: var(--space-5); display: flex; flex-direction: column; align-items: flex-start; }
+    .hero-photo {
+      width: min(220px, 100%);
+      aspect-ratio: 1 / 1.15;
+      border-radius: calc(var(--radius-xl) - 0.25rem);
+      overflow: hidden;
+      background: linear-gradient(180deg, color-mix(in srgb, var(--color-primary) 28%, var(--color-surface-offset)), var(--color-surface-offset));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-muted);
+      border: 1px dashed color-mix(in srgb, var(--color-text) 15%, transparent);
+    }
+    .hero-photo span { padding: var(--space-4); text-align: center; font-size: var(--text-sm); }
+    .stats { display: grid; grid-template-columns: 1fr; gap: var(--space-3); margin-top: var(--space-4); width: 100%; }
+    .stat {
+      padding: var(--space-4);
+      border-radius: var(--radius-lg);
+      background: var(--color-surface-2);
+      border: 1px solid color-mix(in srgb, var(--color-text) 8%, transparent);
+    }
+    .stat strong { display: block; font-size: var(--text-base); }
+    .section-grid { display: grid; grid-template-columns: 0.72fr 1.28fr; gap: var(--space-8); align-items: start; }
+    .stack, .timeline, .docs, .projects, .contact-grid { display: grid; gap: var(--space-4); }
+    .projects, .docs, .contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .card, .project-card, .doc-card, .contact-card, .timeline-item { padding: var(--space-5); }
+    .chips { display: flex; flex-wrap: wrap; gap: 0.65rem; }
+    .chip {
+      padding: 0.55rem 0.8rem;
+      border-radius: var(--radius-full);
+      background: var(--color-primary-highlight);
+      color: var(--color-primary);
+      font-size: var(--text-sm);
+      font-weight: 700;
+    }
+    .chip.alt { background: color-mix(in srgb, var(--color-blue) 13%, var(--color-surface)); color: var(--color-blue); }
+    .chip.gold { background: color-mix(in srgb, var(--color-gold) 15%, var(--color-surface)); color: var(--color-gold); }
+    ul.clean { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--space-3); }
+    ul.clean li { padding-left: 1rem; position: relative; }
+    ul.clean li::before {
+      content: "";
+      width: 0.45rem;
+      height: 0.45rem;
+      border-radius: 999px;
+      background: var(--color-primary);
+      position: absolute;
+      left: 0;
+      top: 0.7rem;
+    }
+    .quote {
+      padding: var(--space-5);
+      border-left: 3px solid var(--color-primary);
+      background: var(--color-surface-offset);
+      border-radius: var(--radius-lg);
+    }
+    .placeholder-note, .wordcloud {
+      margin-top: var(--space-3);
+      padding: var(--space-4);
+      border-radius: var(--radius-lg);
+      background: color-mix(in srgb, var(--color-gold) 10%, var(--color-surface));
+      color: var(--color-text-muted);
+    }
+    .wordcloud .cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1rem;
+      align-items: center;
+      justify-content: center;
+      min-height: 180px;
+      margin-top: var(--space-4);
+    }
+    .wordcloud .cloud span:nth-child(4n) { font-size: 2rem; color: var(--color-primary); }
+    .wordcloud .cloud span:nth-child(3n) { font-size: 1.45rem; color: var(--color-blue); }
+    .wordcloud .cloud span:nth-child(5n) { font-size: 1.25rem; color: var(--color-gold); }
+    .divider { height: 1px; background: var(--color-divider); margin: var(--space-6) 0 var(--space-4); }
+    @media (max-width: 900px) {
+      .hero, .section-grid, .projects, .docs, .contact-grid { grid-template-columns: 1fr; }
+      .header-inner { flex-direction: column; }
+    }
+    @media (max-width: 640px) {
+      .hero-actions { flex-direction: column; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand" aria-label="Cybersecurity Portfolio logo">
+        <svg viewBox="0 0 48 48" fill="none" role="img" aria-hidden="true">
+          <path d="M24 4L38 10V21C38 30.2 32.2 38.55 24 42C15.8 38.55 10 30.2 10 21V10L24 4Z" stroke="currentColor" stroke-width="2.6"/>
+          <path d="M18 23.5L22 27.5L30.5 18.5" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Cybersecurity Portfolio</span>
+      </div>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#about" data-panel-link="about" class="active">About</a>
+        <a href="#profile" data-panel-link="profile">Profile</a>
+        <a href="#education" data-panel-link="education">Education</a>
+        <a href="#skills" data-panel-link="skills">Skills</a>
+        <a href="#projects" data-panel-link="projects">Projects</a>
+        <a href="#reflections" data-panel-link="reflections">Reflections</a>
+        <a href="#certifications" data-panel-link="certifications">Certifications</a>
+        <a href="#documents" data-panel-link="documents">Documents</a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">☾</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="shell">
+    <section class="panel active" id="about" data-panel="about">
+      <div class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">Omar Reyes - Cybersecurity Portfolio</div>
+          <h1>IT professional gaining practical experience in networking, support, and security labs.</h1>
+          
+        </div>
+        <aside class="hero-card" aria-label="Profile summary card">
+          <div class="hero-photo" role="img" aria-label="Placeholder for your professional headshot">
+            <img src="professional-picture.jpeg" alt="Professional headshot" style="width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
+          <div class="stats">
+            <div class="stat"><strong>Class Rank</strong><span>Graduate</span></div>
+            <div class="stat"><strong>College</strong><span>Houston Community College</span></div>
+            <div class="stat"><strong>Career Goal</strong><span>Network Engineer</span></div>
+            <div class="stat"><strong>Location</strong><span>Houston, Texas</span></div>
+          </div>
+        </aside>
+      </div>
+      <div class="hero-actions" style="margin-top: var(--space-8);">
+        <div class="contact-grid" style="width: 100%;">
+          <div class="contact-card"><h3>Email</h3><p>yourprofessionalemail@example.com</p></div>
+          <div class="contact-card"><h3>LinkedIn</h3><p>Replace with your LinkedIn URL.</p></div>
+          <div class="contact-card"><h3>GitHub</h3><p>Replace with your GitHub profile URL.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="profile" data-panel="profile">
+      <div class="section-grid">
+        <div class="section-intro">
+          <h2>Profile</h2>
+          
+        </div>
+        <div class="stack">
+          <div class="card">
+            <h3>Professional Introduction</h3>
+            <p>I have completed Computer Systems Network & Telecommunications - Cybersecurity program at HCC, building practical experience through labs, coursework, technical support work, and security-focused learning. I am especially interested in networking, infrastructure, and defensive security.</p>
+          </div>
+          <div class="card">
+            <h3>Competitions</h3>
+            <ul class="clean">
+              <li>XP Cyber challenges.</li>
+              <li>NDG guided labs.</li>
+              <li> participation.</li>
+              
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Employment History</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <strong>IT Technical Support</strong>
+                <div class="meta">Current role</div>
+                <p>Provide end-user support including onboarding new users to Microsoft accounts, eCW, and 3CX phone systems. Manage device onboarding and configuration, deploy and maintain network infrastructure on Unifi (routers, cameras, access points), and handle support tickets efficiently using Jira. Ensure smooth operations through proactive troubleshooting and clear documentation.</p>
+              </div>
+              <div class="timeline-item">
+                <strong>Low-Voltage Technician</strong>
+                <div class="meta">Previous role</div>
+                <p>Performed cable terminations and connectivity testing, ensured precise connections, interpreted blueprints/schematics for cabling installation, and collaborated with crew to troubleshoot issues and meet project deadlines under pressure.</p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Role Model</h3>
+            <div class="quote">
+              <p>“Life is like riding a bicycle. To keep your balance, you must keep moving.”</p>
+              <p class="small">- Albert Einstein</p>
+            </div>
+          </div>
+          <div class="wordcloud">
+            <h3>Word Cloud</h3>
+            <img src="diamond_wordcloud.png" alt="Diamond-shaped word cloud using cybersecurity and professional words" style="width:100%; max-width:420px; display:block; margin:1rem auto 0; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.08);">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="education" data-panel="education">
+      <div class="section-grid">
+        <div class="section-intro"><h2>Education & Coursework</h2></div>
+        <div class="stack">
+          <div class="card"><h3>Academic Background</h3><ul class="clean"><li>Degree program: Computer Systems Network & Telecommunications - Cybersecurity.</li><li>College: Houston Community College.</li><li>Graduation date: May 8, 2026</li></ul></div>
+          <div class="card"><h3>Relevant Courses</h3><div class="chips"><span class="chip">Network Security</span><span class="chip">Computer Virtualization</span><span class="chip alt">Principles of Ethical Hacking</span><span class="chip alt">Linux Administration</span><span class="chip gold">Digital Forensics</span><span class="chip gold">Intrusion Detection</span></div></div>
+          <div class="card"><h3>How Coursework Prepared Me</h3><p>Through cybersecurity coursework, I developed practical experience analyzing network traffic, working with operating systems, understanding attack methods, documenting findings, and applying defensive controls. These classes helped me connect classroom concepts to real tasks performed in network, support, and security roles.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="skills" data-panel="skills">
+      <div class="section-grid">
+        <div class="section-intro"><h2>Cybersecurity Skills</h2></div>
+        <div class="stack">
+          <div class="card"><h3>Technical Skills</h3><div class="chips"><span class="chip">Wireshark</span><span class="chip">Kali Linux</span><span class="chip">Cisco</span><span class="chip">Windows</span><span class="chip">Linux CLI</span><span class="chip">Python</span><span class="chip">Bash</span><span class="chip">GitHub</span><span class="chip">Virtual Machines</span><span class="chip">Network Troubleshooting</span></div></div>
+          <div class="card"><h3>Security Domains</h3><ul class="clean"><li>Network security and traffic analysis.</li><li>SOC-oriented monitoring, log review, and incident workflows.</li><li>System hardening, authentication, and access control.</li><li>Foundational digital forensics and investigative reasoning.</li></ul></div>
+          <div class="card"><h3>Professional Skills</h3><ul class="clean"><li>Documentation and technical writing.</li><li>Analytical thinking and problem solving.</li><li>Team collaboration and communication.</li><li>Customer support and issue resolution.</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="projects" data-panel="projects">
+      <div class="section-grid">
+        <div class="section-intro"><h2>Projects & Hands-On Experience</h2></div>
+        <div class="projects">
+          <article class="project-card"><h3>CyberOps Project</h3><p class="tagline">Built a mini SOC on a Windows laptop using Sysmon and Splunk.</p><ul class="clean"><li>Installed and configured Sysmon to capture process creation, network connections, file creation, and PowerShell activity.</li><li>Set up Splunk Free locally to collect and search Sysmon logs.</li><li>Verified logging in Event Viewer and used Splunk searches to identify activity such as whoami.</li><li>Learned how SOC analysts use log collection, indexing, and searching to detect suspicious behavior.</li></ul></article>
+          <article class="project-card"><h3>Netlab Guided Lab</h3><p class="tagline">Configured RADIUS services in a guided Netlab lab across Windows and Ubuntu.</p><ul class="clean"><li>Added the Network Policy Server role on Windows, registered NPS in Active Directory, and created a RADIUS client and network policy for SecOnion.</li><li>Configured FreeRADIUS on Ubuntu, created a local test user, and ran the service in debug mode for testing.</li><li>Used radtest to validate authentication and confirm Access-Accept responses.</li><li>Learned how RADIUS supports authentication and authorization in enterprise environments.</li></ul></article>
+          <article class="project-card"><h3></h3><p class="tagline">Document your participation with any metrics, rankings, or notable challenge areas.</p><ul class="clean"><li>Competition format.</li><li>Categories attempted.</li><li>What improved in your technical ability.</li><li>Visuals or certificates.</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="reflections" data-panel="reflections">
+      <div class="section-grid">
+        <div class="section-intro"><h2>Reflections</h2></div>
+        <div class="stack">
+          <div class="card"><h3>Skills Gained</h3><p>Throughout my courses, I strengthened my ability to analyze security problems, follow structured procedures, and document technical work clearly. I became more comfortable working with tools like Sysmon, Splunk, SSH, and Linux command-line utilities.</p></div>
+          <div class="card"><h3>Challenges and Solutions</h3><p>One of the biggest challenges was working through unfamiliar lab steps and troubleshooting issues when results did not appear as expected. I addressed this by slowing down, checking each configuration step, testing changes one at a time, and reviewing the lab instructions carefully until I found the cause of the problem.</p></div>
+          <div class="card"><h3>Growth in Understanding</h3><p>My courses helped me see cybersecurity as more than just tools and commands. I now better understand how authentication, logging, monitoring, and access control work together to protect systems, and I can see how these concepts apply in SOC and network security environments.</p></div>
+          <div class="card"><h3>Areas for Improvement</h3><p>I still want to improve my speed and confidence with advanced troubleshooting, SIEM analysis, and security hardening tasks. I also want to get better at applying the skills and knowledge I learned in class to real-world situations and practical cybersecurity work.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="certifications" data-panel="certifications">
+      <div class="section-grid">
+        <div class="section-intro"><h2>Certifications</h2></div>
+        <div class="stack">
+          <div class="card"><h3>Current Certifications</h3><ul class="clean"><li>CompTIA Network+</li><li>CompTIA Security+</li><li>Azure Fundamentals</li></ul></div>
+          <div class="card"><h3>In Progress</h3><ul class="clean"><li>CompTIA A+</li></ul></div>
+        </div>
+      </div>
+    </section>
+<section class="panel" id="documents" data-panel="documents">
+      <div class="section-grid">
+        <div class="section-intro"><h2>Supporting Documents</h2></div>
+        <div class="docs">
+          <div class="doc-card"><h3>Resume</h3><p>Add a PDF link to your current resume.</p></div>
+          <div class="doc-card"><h3>Certificates</h3><p>Upload certification proof, badges, or completion certificates.</p></div>
+          <div class="doc-card"><h3>CompTIA Security+</h3><p><a href="securityplus-certificate.pdf">View certificate</a></p></div>
+          <div class="doc-card"><h3>CompTIA Network+</h3><p><a href="networkplus-certificate.pdf">View certificate</a></p></div>
+          <div class="doc-card"><h3>Azure Fundamentals</h3><p><a href="azure-fundamentals-certificate.jpg">View certificate</a></p></div>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <section class="panel" id="contact" data-panel="contact">
+      <div class="section-grid">
+        <div class="section-intro"><h2>Contact</h2></div>
+        <div class="contact-grid">
+          <div class="contact-card"><h3>Email</h3><p>yourprofessionalemail@example.com</p></div>
+          <div class="contact-card"><h3>LinkedIn</h3><p>Replace with your LinkedIn URL.</p></div>
+          <div class="contact-card"><h3>GitHub</h3><p>Replace with your GitHub profile URL.</p></div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <p class="small">Checklist before submitting: update your name, replace placeholders, add your smaller headshot, insert your real JPG word cloud, attach documents, and test every link.</p>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const btn = document.querySelector('[data-theme-toggle]');
+      const links = Array.from(document.querySelectorAll('[data-panel-link]'));
+      const panels = Array.from(document.querySelectorAll('[data-panel]'));
+      let mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', mode);
+      btn.textContent = mode === 'dark' ? '☀' : '☾';
+
+      function showPanel(name) {
+        panels.forEach(panel => panel.classList.toggle('active', panel.dataset.panel === name));
+        links.forEach(link => link.classList.toggle('active', link.dataset.panelLink === name));
+      }
+
+      const valid = new Set(panels.map(panel => panel.dataset.panel));
+      const initial = window.location.hash.replace('#', '');
+      showPanel(valid.has(initial) ? initial : 'about');
+
+      links.forEach(link => {
+        link.addEventListener('click', function (event) {
+          event.preventDefault();
+          const target = link.dataset.panelLink;
+          showPanel(target);
+          history.replaceState(null, '', '#' + target);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      });
+
+      btn.addEventListener('click', function () {
+        mode = mode === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', mode);
+        btn.textContent = mode === 'dark' ? '☀' : '☾';
+      });
+    }());
+  </script>
+</body>
+</html>
+
